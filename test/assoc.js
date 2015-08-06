@@ -32,4 +32,11 @@ describe('assoc', function() {
     assert.deepEqual(f({x: 42}, obj1), expected);
     assert.deepEqual(g(obj1), expected);
   });
+
+  it('preserves arrays', function() {
+    var a1 = ['A', 'B'];
+    var a2 = R.assoc(1, 'C', a1);
+    assert.deepEqual(a2, ['A', 'C']);
+    assert(Array.isArray(a2), 'array is preserved');
+  });
 });
